@@ -79,7 +79,8 @@ if __name__ == "__main__":
         pass
     print(f"💎 {PLATFORM_NAME} is online.")  # Tell the terminal it's alive
     try:
-        loop = asyncio.get_event_loop()
+        loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
         import concurrent.futures
         loop.set_default_executor(concurrent.futures.ThreadPoolExecutor(max_workers=64, thread_name_prefix="AsyncWorker"))
         loop.run_until_complete(start_web_server())
@@ -155,7 +156,8 @@ if __name__ == "__main__":
     finally:
         # Clean up any pending asyncio tasks (like hanging Telethon client loops)
         try:
-            loop = asyncio.get_event_loop()
+            loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
             pending = asyncio.all_tasks(loop)
             for task in pending:
                 task.cancel()
