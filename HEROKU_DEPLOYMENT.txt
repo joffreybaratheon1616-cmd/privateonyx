@@ -1,0 +1,7 @@
+ONYX PRIVATE — HEROKU STARTUP
+1. Deploy the contents of this ZIP as the app source (Procfile and requirements.txt are at the root).
+2. In Heroku Settings > Config Vars, set API_ID, API_HASH, and BOT_TOKEN.
+3. Optional: set ADMIN_IDS as comma-separated Telegram numeric user IDs.
+4. Scale the web process to 1 dyno: heroku ps:scale web=1 -a YOUR_APP_NAME
+5. View startup output: heroku logs --tail -a YOUR_APP_NAME
+The app already starts an HTTP health listener using Heroku's PORT and starts the Telegram client.
